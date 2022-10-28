@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 
+// Services
+import UserService from '../../services/UserService';
 
 
 interface HomeProps {}
@@ -13,8 +15,10 @@ interface HomeProps {}
 const Home: FC<HomeProps> = () => {
 
   const createUser = () => {
-    
-    alert('Working!');
+    const users = UserService.prototype.getUsers();
+    for (let i = 0; i < users.length; i++) {
+      alert(users[i]);
+    }
   }
 
   return (

@@ -2,24 +2,20 @@ import axios from "axios";
 
 class UserService {
 
-    getUsers(): any {
-        
-        return ['Juan Diego', 'Nicolas', 'Santiago'];
+    async postUsers(userData: Object): Promise<Object> {
+        let response = await axios.post("http://localhost:3001/users", userData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        });
 
-        // axios.get('http://localhost:3001/')
-        
-        //     .then((res) => {
-        //         console.log(res);
-        //         return res;
-        //     })
+        return response.data;
+    }
 
-        //     .catch((err) => {
-        //         console.log(err);
-        //         return err;
-        //     });
-        
-        
+    async getUsers(): Promise<Object> {
+        let response = await axios.get('http://localhost:3001/users');
+        return response.data;
     };
 }
 
-export default UserService;
+export default new UserService();

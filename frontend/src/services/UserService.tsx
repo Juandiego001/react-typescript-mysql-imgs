@@ -3,7 +3,7 @@ import axios from "axios";
 class UserService {
 
     async postUsers(userData: Object): Promise<Object> {
-        let response = await axios.post("http://localhost:3001/users", userData, {
+        let response = await axios.post("http://localhost:3002/users", userData, {
             headers: {
                 "Content-Type": "multipart/form-data"
             }
@@ -13,7 +13,7 @@ class UserService {
     }
 
     async getUsers(): Promise<Object> {
-        let response = await axios.get('http://localhost:3001/users');
+        let response = await axios.get('http://localhost:3002/users');
         return response.data;
     };
 }

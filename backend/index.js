@@ -4,7 +4,6 @@ const mysql = require('mysql');
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
-const { CONNREFUSED } = require('dns');
 
 const storage = multer.diskStorage({
     destination: async (req, file, cb) => {
@@ -31,7 +30,8 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         let theFile = file.originalname;
-        let suffix = theFile.split(".")[1];
+        let splitName = theFile.split(".");
+        let suffix = splitName[splitName.length - 1];
         let { email } = req.body;
         cb(null, email + "." + suffix);
     }

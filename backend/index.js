@@ -46,17 +46,21 @@ const DB_USER = process.env.DB_USER;
 const DB_PASS = process.env.DB_PASS;
 const DB_PORT = process.env.DB_PORT;
 const DB_NAME = process.env.DB_NAME;
+
+console.log({PORT, DB_USER, DB_PASS, DB_PORT, DB_NAME});
+
 const connection = mysql.createConnection({
     "host": "localhost",
     "port": DB_PORT,
-    "user": DB_PASS,
-    "password": DB_USER,
+    "user": DB_USER,
+    "password": DB_PASS,
     "database": DB_NAME
 })
 
 connection.connect(async err => {
     if (err) {
         console.log("Ocurrió un error al intentar conectar la base de datos");
+        console.log(err);
         return;
     }
 
